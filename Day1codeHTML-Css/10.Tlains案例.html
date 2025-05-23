@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T1ias智能学习辅助系统</title>
+  <style>
+    /* 设置导航栏样式 */
+    .navbar {
+      background-color: #cccccc; /* 灰色背景 */
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    /* 标题样式：加粗、居左 */
+    .navbar h1 {
+      margin: 0;
+      font-weight: bold;
+      font-size: 24px;
+      color: white; /* 白色文字 */;
+      /* 设置字体为楷体 */
+      font-family: KaiTi, serif;
+    }
+
+    /* 退出登录链接样式 */
+    .logout-link {
+      text-decoration: none;
+      color: #007BFF; /* 蓝色文字 */
+      font-size: 16px;
+    }
+
+    .logout-link:hover {
+      text-decoration: underline;
+    }
+
+     /* 搜索表单区域样式 */
+        .search-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-form {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .form-control {
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #0066cc;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #0066cc;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0052a3;
+        }
+        
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        } 
+        
+          /* 表格展示区域样式 */
+        .table-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .add-btn {
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-btn:hover {
+            background-color: #218838;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table th {
+            background-color: #f8f9fa;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dee2e6;
+            vertical-align: middle;
+        }
+        
+        .data-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .action-btns {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .edit-btn {
+            padding: 6px 12px;
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .edit-btn:hover {
+            background-color: #138496;
+        }
+        
+        .delete-btn {
+            padding: 6px 12px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+              /* 页脚版权区域 */
+    .footer {
+        background-color: #8f8c8c;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 30px;
+    }
+
+    .footer .company-name {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    .footer .copyright {
+        font-size: 0.9em;
+    }
+
+        #container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+
+  </style>
+</head>
+<body>
+
+<div id="content-container">
+    <!-- 导航栏 -->
+  <div class="navbar">
+    <h1>T1ias智能学习辅助系统</h1>
+    <a href="#" class="logout-link">退出登录</a>
+  </div>
+
+  <!-- 后续内容可以继续添加 -->
+  
+    <!-- 搜索表单区域 -->
+    <section class="search-section">
+        <form class="search-form">
+            <!-- 姓名输入框 -->
+            <div class="form-group">
+                <label for="name">姓名</label>
+                <input type="text" id="name" class="form-control" placeholder="请输入姓名">
+            </div>
+            
+            <!-- 性别下拉选择 -->
+            <div class="form-group">
+                <label for="gender">性别</label>
+                <select id="gender" class="form-control">
+                    <option value="" selected disabled>请选择性别</option>
+                    <option value="male">男</option>
+                    <option value="female">女</option>
+                </select>
+            </div>
+            
+            <!-- 职位下拉选择 -->
+            <div class="form-group">
+                <label for="position">职位</label>
+                <select id="position" class="form-control">
+                    <option value="" selected disabled>请选择职位</option>
+                    <option value="head-teacher">班主任</option>
+                    <option value="lecturer">讲师</option>
+                    <option value="student-affairs">学工主管</option>
+                    <option value="teaching-research">教研主管</option>
+                    <option value="consultant">咨询师</option>
+                </select>
+            </div>
+            
+            <!-- 按钮组 -->
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">查询</button>
+                <button type="reset" class="btn btn-secondary">清空</button>
+            </div>
+        </form>
+    </section>
+
+  <!-- 后续内容可以继续添加 -->
+    <!-- 表格展示区域 -->
+    <section class="table-section">
+        <div class="table-header">
+            <h2 class="section-title">教职工信息表</h2>
+            <button class="add-btn">新增教职工</button>
+        </div>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>头像</th>
+                    <th>职位</th>
+                    <th>入职日期</th>
+                    <th>最后操作时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 测试数据1：令狐冲 -->
+                <tr>
+                    <td>令狐冲</td>
+                    <td>男</td>
+                    <td><img src="img/1.jpg" alt="令狐冲" class="avatar"></td>
+                    <td>讲师</td>
+                    <td>2023-03-15</td>
+                    <td>2025-05-20 14:30</td>
+                    <td>
+                        <div class="action-btns">
+                            <button class="edit-btn">编辑</button>
+                            <button class="delete-btn">删除</button>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- 测试数据2：任盈盈 -->
+                <tr>
+                    <td>任盈盈</td>
+                    <td>女</td>
+                    <td><img src="img/2.jpg" alt="任盈盈" class="avatar"></td>
+                    <td>学工主管</td>
+                    <td>2022-08-10</td>
+                    <td>2025-05-18 09:45</td>
+                    <td>
+                        <div class="action-btns">
+                            <button class="edit-btn">编辑</button>
+                            <button class="delete-btn">删除</button>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- 测试数据3：岳不群 -->
+                <tr>
+                    <td>岳不群</td>
+                    <td>男</td>
+                    <td><img src="img/3.jpg" alt="岳不群" class="avatar"></td>
+                    <td>教研主管</td>
+                    <td>2021-05-22</td>
+                    <td>2025-05-15 16:20</td>
+                    <td>
+                        <div class="action-btns">
+                            <button class="edit-btn">编辑</button>
+                            <button class="delete-btn">删除</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+      <!-- 页脚版权区域 -->
+  <footer class="footer">
+    <p class="company-name">江苏传智播客教育科技股份有限公司</p>
+    <p class="copyright">版权所有 Copyright 2006-2024 All Rights Reserved</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
